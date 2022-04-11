@@ -20,23 +20,22 @@ jobs:
             - uses: actions/setup-node@v3
               with:
                   node-version: "17.3.0"
-                  cache: yarn
 
             - name: 🏗️ Prerequisites (Frontend)
-              run: yarn
               working-directory: frontend
+              run: yarn
 
             - name: 🏗️ Prerequisites (Backend)
-              run: yarn
               working-directory: backend
+              run: yarn
 
             - name: 🔨 Build (Frontend)
-              run: yarn build
               working-directory: frontend
+              run: yarn build
 
             - name: 🔨 Build (Backend)
-              run: yarn build
               working-directory: backend
+              run: yarn build
 
             - name: ✂️ Copy outputs
               run: |
