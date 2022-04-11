@@ -1,0 +1,41 @@
+name: Deploy
+
+on:
+    workflow_dispatch:
+    schedule:
+        - cron: "0 0 * * *"
+
+env:
+    GENERATED_GLOB: data/quotes.json
+    DEPLOY_BRANCH: dist
+    DEPLOY_DIR: dist
+    GIT_CONFIG_NAME: "[Automated] UprightQuotes"
+    GIT_CONFIG_EMAIL: zyrouge@users.noreply.github.com
+    GIT_COMMIT_MSG: "[automated] update data files (${{ github.sha }})"
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v3
+
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: "17.3.0"
+                  cache: yarn
+
+            - name: 🏗️ Prerequisites
+              run: yarn
+
+            - name: 🔨 Build
+              run: yarn build
+
+            - name: 🚀 Deploy
+              uses: JamesIves/github-pages-deploy-action@v4.3.0
+              with:
+                  branch: ${{ env.DEPLOY_BRANCH }}
+                  folder: ${{ env.DEPLOY_DIR }}
+                  git-config-name: ${{ env.GIT_CONFIG_NAME }}
+                  git-config-email: ${{ env.GIT_CONFIG_EMAIL }}
+                  commit-message: ${{ env.GIT_COMMIT_MSG }}
