@@ -1,4 +1,4 @@
-# Upright Quotes
+# [Upright Quotes](https://zyrouge.github.io/upright-quotes)
 
 ✨ Random quotes as JSON and Image. Open-sourced and available for public.
 
@@ -6,8 +6,9 @@
 
 ## Base URL
 
--   Github: `https://raw.githubusercontent.com/zyrouge/upright-quotes/dist/api`
--   JsDelivr: `https://cdn.jsdelivr.net/gh/zyrouge/upright-quotes@dist/api`
+-   GitHub Pages: `https://zyrouge.github.io/upright-quotes/api`
+-   Github Raw: `https://raw.githubusercontent.com/zyrouge/upright-quotes/gh-pages/api`
+-   JsDelivr: `https://cdn.jsdelivr.net/gh/zyrouge/upright-quotes@gh-pages/api`
 
 ## Get Metadata
 
