@@ -1,6 +1,6 @@
 # [Upright Quotes](https://zyrouge.github.io/upright-quotes)
 
-✨ Random quotes as JSON and Image. Open-sourced and available for public.
+✨ Curated list of deep-meaning quotes as text or image.
 
 # API Endpoints
 
