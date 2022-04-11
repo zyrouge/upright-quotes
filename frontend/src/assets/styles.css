@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --header-height: 4rem;
+    --content-padding-top: 1rem;
+    --content-padding-bottom: 4rem;
+    --footer-height: 4rem;
+}
+
+body {
+    font-family: "Urbanist", sans-serif;
+}
+
+.u-flex-center {
+    @apply flex justify-center items-center;
+}
+
+.u-link {
+    @apply transition duration-200 hover:opacity-80;
+}
+
+#header {
+    height: var(--header-height);
+}
+
+#content {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+    padding-top: var(--content-padding-top);
+    padding-bottom: var(--content-padding-bottom);
+}
+
+#footer {
+    min-height: var(--footer-height);
+}

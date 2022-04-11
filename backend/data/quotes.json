@@ -1,0 +1,24 @@
+{
+    "quotes": [
+        {
+            "quote": "Tears come from the heart and not from the brain.",
+            "author": "Leonardo da Vinci",
+            "color": "biased"
+        },
+        {
+            "quote": "Broken people always create the most beautiful pieces of art.",
+            "author": "Unknown",
+            "color": "teal"
+        },
+        {
+            "quote": "The odds of everything you believe being true is effectively zero.",
+            "author": "Unknown",
+            "color": "orange"
+        },
+        {
+            "quote": "A person who trust no one now, once trusted someone too much.",
+            "author": "Unknown",
+            "color": "neutral"
+        }
+    ]
+}
