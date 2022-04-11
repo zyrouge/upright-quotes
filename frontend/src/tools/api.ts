@@ -1,3 +1,5 @@
+import { ExternalURLs } from "./constants";
+
 export interface IMeta {
     size: number;
     generatedAt: number;
@@ -15,7 +17,9 @@ export interface IQuote {
 }
 
 export class API {
-    static url = import.meta.env["VITE_API_URL"] ?? "/api";
+    static url =
+        import.meta.env["VITE_API_URL"] ??
+        `https://cdn.jsdelivr.net/gh/${ExternalURLs._ghUsername}/${ExternalURLs._ghRepo}@${ExternalURLs._ghDistBranch}/api`;
 
     static async getMeta(): Promise<IMeta> {
         const resp = await fetch(API.getMetaJsonURL());
