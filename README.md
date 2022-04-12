@@ -1,10 +1,16 @@
+<p align="center">
+    <img src="./media/banner.png">
+</p>
+
 # Upright Quotes
 
 ✨ Curated list of deep-meaning quotes as text or image.
 
+[![Deploy](https://github.com/zyrouge/upright-quotes/actions/workflows/deploy.yml/badge.svg)](https://github.com/zyrouge/upright-quotes/actions/workflows/deploy.yml)
+
 # Links
 
--   [Site](https://zyrouge.github.io/upright-quotes)
+-   [Website](https://zyrouge.github.io/upright-quotes)
 -   [API Documentation](https://github.com/zyrouge/upright-quotes/wiki/API-Documentation)
 
 # License
