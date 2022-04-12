@@ -47,7 +47,7 @@ export class API {
 
     static request(input: RequestInfo, init?: RequestInit) {
         return fetch(input, {
-            cache: "reload",
+            cache: "no-cache",
             ...init,
         });
     }
