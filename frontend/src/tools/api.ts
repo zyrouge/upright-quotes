@@ -22,13 +22,13 @@ export class API {
         `https://cdn.jsdelivr.net/gh/${ExternalURLs._ghUsername}/${ExternalURLs._ghRepo}@${ExternalURLs._ghDistBranch}/api`;
 
     static async getMeta(): Promise<IMeta> {
-        const resp = await fetch(API.getMetaJsonURL());
+        const resp = await API.request(API.getMetaJsonURL());
         const json = await resp.json();
         return json as IMeta;
     }
 
     static async getQuoteJson(index: number): Promise<IQuote> {
-        const resp = await fetch(API.getQuoteJsonURL(index));
+        const resp = await API.request(API.getQuoteJsonURL(index));
         const json = await resp.json();
         return json as IQuote;
     }
@@ -43,5 +43,12 @@ export class API {
 
     static getQuoteImageURL(index: number) {
         return `${API.url}/quotes/${index}.png`;
+    }
+
+    static request(input: RequestInfo, init?: RequestInit) {
+        return fetch(input, {
+            cache: "reload",
+            ...init,
+        });
     }
 }
