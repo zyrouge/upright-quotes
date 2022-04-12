@@ -42,7 +42,7 @@ jobs:
                   rm -rf ./dist/
                   cp -a ./frontend/dist/. ./dist/
                   cp -a ./backend/dist/. ./dist/
-                  touch .nojekyll
+                  touch ./dist/.nojekyll
 
             - name: 🚀 Deploy
               uses: JamesIves/github-pages-deploy-action@v4.3.0
