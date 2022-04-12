@@ -27,7 +27,9 @@ const getQuote = async () => {
     }
 
     const index =
-        typeof _qParamsIndex === "number" && !isNaN(_qParamsIndex)
+        typeof _qParamsIndex === "number" &&
+        !isNaN(_qParamsIndex) &&
+        _qParamsIndex < meta.value.size
             ? _qParamsIndex
             : Utils.random(meta.value.size, currentQuote.value?.index ?? -1);
 
