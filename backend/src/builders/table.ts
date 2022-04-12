@@ -1,6 +1,6 @@
 import { IQuotesTable } from "../models/quote";
 import { generateQuoteOutputPng } from "./image";
-import { generateQuoteOutputJson } from "./quotes";
+import { generateQuoteOutputJson, generateQuoteTableOutputJson } from "./quotes";
 
 export const generateQuoteOutputs = async (table: IQuotesTable) => {
     for (let i = 0; i < table.quotes.length; i++) {
@@ -8,4 +8,5 @@ export const generateQuoteOutputs = async (table: IQuotesTable) => {
         await generateQuoteOutputPng(i, quote);
         await generateQuoteOutputJson(i, quote);
     }
+    await generateQuoteTableOutputJson(table);
 };

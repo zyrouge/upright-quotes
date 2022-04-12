@@ -20,6 +20,7 @@ export class FilePaths {
     );
 
     static outputMetaJson = path.join(Paths.outputApi, "meta.json");
+    static outputQuotesTableJson = path.join(Paths.outputQuotesParent, "all.json");
 
     static getOutputQuoteJson(index: number) {
         return path.join(Paths.outputQuotesParent, `${index}.json`);
