@@ -11,6 +11,7 @@ export interface IColorScheme {
 }
 
 export interface IQuote {
+    index: number;
     quote: string;
     author: string;
     color: IColorScheme;

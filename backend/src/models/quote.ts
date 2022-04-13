@@ -11,5 +11,6 @@ export interface IQuotesTable {
 }
 
 export interface IQuoteOutput extends Omit<IQuote, "color"> {
+    index: number;
     color: IColorScheme;
 }

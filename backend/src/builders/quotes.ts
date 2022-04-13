@@ -6,6 +6,7 @@ import { ColorScheme } from "../tools/colors";
 export const generateQuoteOutputJson = async (index: number, quote: IQuote) => {
     const response: IQuoteOutput = {
         ...quote,
+        index,
         color: ColorScheme.getColor(quote.color).toJson(),
     };
 
@@ -15,8 +16,9 @@ export const generateQuoteOutputJson = async (index: number, quote: IQuote) => {
 };
 
 export const generateQuoteTableOutputJson = async (table: IQuotesTable) => {
-    const response: IQuoteOutput[] = table.quotes.map(x => ({
+    const response: IQuoteOutput[] = table.quotes.map((x, i) => ({
         ...x,
+        index: i,
         color: ColorScheme.getColor(x.color).toJson(),
     }));
 
