@@ -1,9 +1,9 @@
 import { rm } from "fs-extra";
-import { generateMeta, generateQuoteOutputs } from "./builders/exports";
-import { Paths } from "./config";
-import { getQuotesTable } from "./parsers/quotes";
+import { generateMeta, generateQuoteOutputs } from "../builders/exports";
+import { Paths } from "../config";
+import { getQuotesTable } from "../parsers/quotes";
 
-const start = async () => {
+const build = async () => {
     const table = await getQuotesTable();
 
     await rm(Paths.output, {
@@ -18,4 +18,4 @@ const start = async () => {
     });
 };
 
-start();
+build();
