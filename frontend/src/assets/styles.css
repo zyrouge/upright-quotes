@@ -3,15 +3,20 @@
 @tailwind utilities;
 
 :root {
-    --header-height: 4rem;
+    --loader-child-size: 0.25rem;
+    --loader-child-duration: 1s;
+    --loader-child-delay: 0.3s;
+    --content-header-height: 4rem;
     --content-container-padding-top: 3rem;
     --content-container-padding-bottom: 4rem;
     --content-padding-bottom: 4rem;
-    --content-max-width: 650px;
+    --content-max-width: 500px;
 }
 
 body {
     font-family: "Urbanist", sans-serif;
+
+    @apply text-white bg-neutral-900;
 }
 
 .u-flex-center {
@@ -22,12 +27,50 @@ body {
     @apply transition duration-200 hover:opacity-80;
 }
 
-#header {
-    height: var(--header-height);
+#app-container-t > * {
+    position: absolute;
+}
+
+#loader-child:nth-child(0) {
+    --loader-child-index: 0;
+}
+
+#loader-child:nth-child(1) {
+    --loader-child-index: 1;
+}
+
+#loader-child:nth-child(2) {
+    --loader-child-index: 2;
+}
+
+#loader-child {
+    width: var(--loader-child-size);
+    height: var(--loader-child-size);
+
+    animation-name: loader-animation;
+    animation-duration: var(--loader-child-duration);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-delay: calc(
+        var(--loader-child-index) * var(--loader-child-delay)
+    );
+
+    @apply bg-white rounded-full;
 }
 
 #content-container {
-    min-height: calc(100vh - var(--header-height));
+    min-height: 100vh;
+    width: 100%;
+
+    @apply px-10;
+}
+
+#content-header {
+    height: var(--content-header-height);
+}
+
+#content-parent {
+    min-height: calc(100vh - var(--content-header-height));
     padding-top: var(--content-container-padding-top);
     padding-bottom: var(--content-container-padding-bottom);
 }
@@ -35,4 +78,26 @@ body {
 #content {
     max-width: var(--content-max-width);
     padding-bottom: var(--content-padding-bottom);
+}
+
+.app-container-fade-enter-active,
+.app-container-fade-leave-active {
+    transition: all 0.3s ease-in-out;
+}
+
+.app-container-fade-enter-from,
+.app-container-fade-leave-to {
+    opacity: 0;
+}
+
+@keyframes loader-animation {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
 }

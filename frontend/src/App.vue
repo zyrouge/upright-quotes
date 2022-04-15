@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { API, IMeta, IQuote } from "./tools/api";
-import { ExternalURLs } from "./tools/constants";
 import { Locale } from "./tools/locale";
 import { Utils } from "./tools/utils";
 
+import Loader from "./components/Loader.vue";
+import Quote, { ICurrentQuote } from "./components/Quote.vue";
+
+const ready = ref(false);
 const meta = ref<IMeta | null>(null);
 
 const getMeta = async () => {
@@ -14,12 +17,7 @@ const getMeta = async () => {
 let _qParamsIndex: number | null = parseInt(
     new URL(location.href).searchParams.get(Locale.QParamsIndex) ?? ""
 );
-const currentQuote = ref<{
-    index: number;
-    quote: IQuote;
-    json: string;
-    image: string;
-} | null>(null);
+const currentQuote = ref<ICurrentQuote | null>(null);
 
 const getQuote = async () => {
     if (!meta.value) {
@@ -49,72 +47,34 @@ const getQuote = async () => {
 };
 
 (async () => {
+    const startedAt = Date.now();
     await getMeta();
     await getQuote();
+
+    const timeout = Date.now() - startedAt;
+    const requiredInterval = 750;
+    await Utils.sleep(
+        timeout < requiredInterval ? requiredInterval - timeout : 0
+    );
+
+    ready.value = true;
 })();
 </script>
 
 <template>
-    <div
-        class="px-10"
-        v-if="currentQuote"
-        :style="{
-            color: currentQuote.quote.color.contrast,
-            backgroundColor: currentQuote.quote.color.primary,
-        }"
-    >
-        <div id="header" class="u-flex-center !justify-around">
-            <p class="font-bold" :title="Locale.RefreshQuote">
-                <button class="u-link" @click="getQuote">
-                    {{ Locale.UprightQuotes }}
-                </button>
-            </p>
-
-            <div class="u-flex-center gap-6">
-                <a class="u-link" :href="ExternalURLs.github" target="_blank">
-                    {{ Locale.GitHub }}
-                </a>
-                <a class="u-link" :href="ExternalURLs.apiDocs" target="_blank">
-                    {{ Locale.API }}
-                </a>
-            </div>
-        </div>
-
-        <div id="content-container" class="u-flex-center">
-            <div id="content">
-                <p class="text-4xl md:text-6xl font-bold">
-                    {{ currentQuote.quote.quote }}
-                </p>
-                <p class="mt-4 text-lg">~ {{ currentQuote.quote.author }}</p>
-
-                <div class="u-flex-center !justify-start gap-5 mt-4 text-xl">
-                    <button
-                        class="u-link"
-                        @click="getQuote"
-                        :title="Locale.RefreshQuote"
-                    >
-                        <Icon icon="arrow-rotate-right" />
-                    </button>
-
-                    <a
-                        class="u-link"
-                        :href="currentQuote.json"
-                        :title="Locale.ViewAsJSON"
-                        target="_blank"
-                    >
-                        <Icon icon="code" />
-                    </a>
-
-                    <a
-                        class="u-link"
-                        :href="currentQuote.image"
-                        :title="Locale.DownloadAsImage"
-                        target="_blank"
-                    >
-                        <Icon icon="image" />
-                    </a>
-                </div>
-            </div>
-        </div>
+    <div id="app-container">
+        <Transition
+            id="app-container-t"
+            name="app-container-fade"
+            mode="out-in"
+        >
+            <Loader v-if="!ready" />
+            <Quote
+                :key="currentQuote.index"
+                :currentQuote="currentQuote"
+                :refreshQuote="getQuote"
+                v-else-if="ready && currentQuote"
+            />
+        </Transition>
     </div>
 </template>

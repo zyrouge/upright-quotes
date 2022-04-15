@@ -4,4 +4,10 @@ export class Utils {
         if (r === previous) return Utils.random(max, previous);
         return r;
     }
+
+    static sleep(timeout: number) {
+        return new Promise<void>((resolve) => {
+            setTimeout(resolve, timeout);
+        });
+    }
 }
