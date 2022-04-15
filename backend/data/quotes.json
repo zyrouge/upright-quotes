@@ -8,12 +8,12 @@
         {
             "quote": "Broken people always create the most beautiful pieces of art.",
             "author": "Unknown",
-            "color": "teal"
+            "color": "murple"
         },
         {
             "quote": "The odds of everything you believe being true is effectively zero.",
             "author": "Unknown",
-            "color": "orange"
+            "color": "salmon"
         },
         {
             "quote": "A person who trust no one now, once trusted someone too much.",
@@ -33,7 +33,17 @@
         {
             "quote": "Sometimes, the people with the biggest smiles are the ones struggling the most.",
             "author": "Unknown",
-            "color": "emerald"
+            "color": "indigo"
+        },
+        {
+            "quote": "To hurt is as human as to breathe.",
+            "author": "J.K. Rowling",
+            "color": "sapphire"
+        },
+        {
+            "quote": "No matter how much it hurts now, someday you will look back and realize your struggles changed your life for the better.",
+            "author": "Unknown",
+            "color": "amber"
         }
     ]
 }

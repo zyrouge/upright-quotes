@@ -15,19 +15,17 @@ export class ColorScheme implements IColorScheme {
 
     // Source: https://tailwindcss.com/docs/customizing-colors#default-color-palette
     static schemes = {
-        neutral: new ColorScheme("#f5f5f5", "#171717"),
-        biased: new ColorScheme("#171717", "#f5f5f5"),
-        red: new ColorScheme("#dc2626", "#fef2f2"),
-        orange: new ColorScheme("#f97316", "#fff7ed"),
-        amber: new ColorScheme("#f59e0b", "#fffbeb"),
-        emerald: new ColorScheme("#10b981", "#ecfdf5"),
-        teal: new ColorScheme("#14b8a6", "#f0fdfa"),
-        indigo: new ColorScheme("#6366f1", "#eef2ff"),
-        violet: new ColorScheme("#8b5cf6", "#f5f3ff"),
-        purple: new ColorScheme("#a855f7", "#faf5ff"),
-        fuchsia: new ColorScheme("#d946ef", "#fdf4ff"),
-        pink: new ColorScheme("#ec4899", "#fdf2f8"),
-        rose: new ColorScheme("#f43f5e", "#fff1f2"),
+        neutral: new ColorScheme("#F5F5F5", "#000000"),
+        biased: new ColorScheme("#171717", "#FFFFFF"),
+        murple: new ColorScheme("#6E427F", "#FFFFFF"),
+        indigo: new ColorScheme("#6366F1", "#FFFFFF"),
+        violet: new ColorScheme("#8B5CF6", "#FFFFFF"),
+        purple: new ColorScheme("#A855F7", "#FFFFFF"),
+        space: new ColorScheme("#283057", "#FFFFFF"),
+        salmon: new ColorScheme("#F59678", "#000000"),
+        rose: new ColorScheme("#EE5558", "#FFFFFF"),
+        amber: new ColorScheme("#1C1917", "#FACC15"),
+        sapphire: new ColorScheme("#155E75", "#FFFFFF")
     } as const;
 
     static get codes() {
