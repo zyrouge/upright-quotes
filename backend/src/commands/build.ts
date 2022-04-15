@@ -1,5 +1,5 @@
 import { rm } from "fs-extra";
-import { generateMeta, generateQuoteOutputs } from "../builders/exports";
+import { generateQuoteOutputs, generateMetaOutputs } from "../builders/exports";
 import { Paths } from "../config";
 import { getQuotesTable } from "../parsers/quotes";
 
@@ -12,7 +12,7 @@ const build = async () => {
     });
 
     await generateQuoteOutputs(table);
-    await generateMeta({
+    await generateMetaOutputs({
         size: table.quotes.length,
         generatedAt: Date.now(),
     });
