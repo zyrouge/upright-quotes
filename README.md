@@ -26,4 +26,4 @@
 
 # License
 
-[Creative Commons Zero v1.0 Universal License](./license)
+[Creative Commons Zero v1.0 Universal License](./LICENSE)
