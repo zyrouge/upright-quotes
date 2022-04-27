@@ -32,6 +32,11 @@ export class ColorScheme implements IColorScheme {
         NeonBlack: new ColorScheme("#40F717", "#000000"),
         GreenBlack: new ColorScheme("#11F871", "#000000"),
         RoseBlack: new ColorScheme("#FDC4E1", "#000000"),
+        TealWhite: new ColorScheme("#317773", "#FFFFFF"),
+        CobaltWhite: new ColorScheme("#8AAAE5", "#FFFFFF"),
+        PeachOrange: new ColorScheme("#FCEDDA", "#EE4E34"),
+        RedPink: new ColorScheme("#CC313D", "#F7C5CC"),
+        BlackBeige: new ColorScheme("#DDC3A5", "#000000"),
     } as const;
 
     static get codes() {
