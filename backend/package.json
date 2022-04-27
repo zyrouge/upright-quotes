@@ -8,6 +8,7 @@
     "scripts": {
         "add-quote": "ts-node ./src/commands/add.ts",
         "build": "ts-node ./src/commands/build.ts",
+        "test-build": "ts-node ./src/commands/test-build.ts",
         "dev": "yarn build && yarn run serve dist -l 8080 --cors"
     },
     "devDependencies": {

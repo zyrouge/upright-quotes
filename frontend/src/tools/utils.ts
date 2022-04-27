@@ -1,8 +1,17 @@
 export class Utils {
-    static random(max = 1, previous = -1): number {
-        const r = Math.floor(Math.random() * max);
-        if (r === previous) return Utils.random(max, previous);
+    static getUnrepeatedSecureRandomNumber(
+        min = 0,
+        max = 1,
+        previous = -1
+    ): number {
+        const r = Math.floor(Utils.getSecureRandomNumber() * max) + min;
+        if (r === previous)
+            return Utils.getUnrepeatedSecureRandomNumber(max, previous);
         return r;
+    }
+
+    static getSecureRandomNumber() {
+        return crypto.getRandomValues(new Uint8Array(1))[0] / 256;
     }
 
     static sleep(timeout: number) {

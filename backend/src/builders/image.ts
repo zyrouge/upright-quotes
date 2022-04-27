@@ -1,7 +1,7 @@
 import { createCanvas, registerFont } from "canvas";
 import { ensureFile, writeFile } from "fs-extra";
 import { FilePaths } from "../config";
-import { ExternalLinks } from "../constants";
+import { Constants, ExternalLinks } from "../constants";
 import { IQuote } from "../models/exports";
 import { ColorScheme } from "../tools/colors";
 import { FontFamily } from "../tools/fonts";
@@ -77,6 +77,14 @@ export const generateQuoteOutputPng = async (index: number, quote: IQuote) => {
     ctx.textAlign = "end";
     ctx.textBaseline = "bottom";
     ctx.fillText(ExternalLinks.credits, size - cPaddingX, size - cPaddingY);
+
+    const cSingleHeight = getTextHeight(ctx.measureText("Yy"));
+    ctx.font = `${cFontSize} ${qFontFamily.family}`;
+    ctx.fillText(
+        Constants.title,
+        size - cPaddingX,
+        size - cPaddingY * 2 - cSingleHeight
+    );
 
     const filePath = FilePaths.getOutputQuotePng(index);
     await ensureFile(filePath);

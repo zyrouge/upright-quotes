@@ -4,9 +4,22 @@ export class Paths {
     static root = path.resolve(__dirname, "../");
     static data = path.join(Paths.root, "data");
     static output = path.join(Paths.root, "dist");
-    static outputApi = path.join(Paths.output, "api");
-    static outputQuotesParent = path.join(Paths.outputApi, "quotes");
-    static outputBadgesParent = path.join(Paths.outputApi, "badges");
+
+    static enableTestMode() {
+        Paths.output = path.join(Paths.root, "test-dist");
+    }
+
+    static get outputApi() {
+        return path.join(Paths.output, "api");
+    }
+
+    static get outputQuotesParent() {
+        return path.join(Paths.outputApi, "quotes");
+    }
+
+    static get outputBadgesParent() {
+        return path.join(Paths.outputApi, "badges");
+    }
 }
 
 export class FilePaths {
@@ -21,8 +34,14 @@ export class FilePaths {
     );
 
     static outputMetaJson = path.join(Paths.outputApi, "meta.json");
-    static outputQuotesTableJson = path.join(Paths.outputQuotesParent, "all.json");
-    static outputQuotesCountBadgeJson = path.join(Paths.outputBadgesParent, "count.json");
+    static outputQuotesTableJson = path.join(
+        Paths.outputQuotesParent,
+        "all.json"
+    );
+    static outputQuotesCountBadgeJson = path.join(
+        Paths.outputBadgesParent,
+        "count.json"
+    );
 
     static getOutputQuoteJson(index: number) {
         return path.join(Paths.outputQuotesParent, `${index}.json`);

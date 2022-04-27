@@ -29,7 +29,11 @@ const getQuote = async () => {
         !isNaN(_qParamsIndex) &&
         _qParamsIndex < meta.value.size
             ? _qParamsIndex
-            : Utils.random(meta.value.size, currentQuote.value?.index ?? -1);
+            : Utils.getUnrepeatedSecureRandomNumber(
+                  0,
+                  meta.value.size,
+                  currentQuote.value?.index ?? -1
+              );
 
     const quote = await API.getQuoteJson(index);
     const json = API.getQuoteJsonURL(index);
