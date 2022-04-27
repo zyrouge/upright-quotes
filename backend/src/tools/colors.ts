@@ -37,6 +37,9 @@ export class ColorScheme implements IColorScheme {
         PeachOrange: new ColorScheme("#FCEDDA", "#EE4E34"),
         RedPink: new ColorScheme("#CC313D", "#F7C5CC"),
         BlackBeige: new ColorScheme("#DDC3A5", "#000000"),
+        NavyIvory: new ColorScheme("#1E3D59", "#F5F0E1"),
+        DPurpleWhite: new ColorScheme("#193E0D", "#FFFFFF"),
+        TurquoiseViolet: new ColorScheme("#CB798C", "#267204")
     } as const;
 
     static get codes() {
