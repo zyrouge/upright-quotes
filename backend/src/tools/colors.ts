@@ -13,19 +13,25 @@ export class ColorScheme implements IColorScheme {
         return { primary: this.primary, contrast: this.contrast };
     }
 
-    // Source: https://tailwindcss.com/docs/customizing-colors#default-color-palette
     static schemes = {
-        neutral: new ColorScheme("#F5F5F5", "#000000"),
-        biased: new ColorScheme("#171717", "#FFFFFF"),
-        murple: new ColorScheme("#6E427F", "#FFFFFF"),
-        indigo: new ColorScheme("#6366F1", "#FFFFFF"),
-        violet: new ColorScheme("#8B5CF6", "#FFFFFF"),
-        purple: new ColorScheme("#A855F7", "#FFFFFF"),
-        space: new ColorScheme("#283057", "#FFFFFF"),
-        salmon: new ColorScheme("#F59678", "#000000"),
-        rose: new ColorScheme("#EE5558", "#FFFFFF"),
-        amber: new ColorScheme("#1C1917", "#FACC15"),
-        sapphire: new ColorScheme("#155E75", "#FFFFFF")
+        IvoryBlack: new ColorScheme("#F5F5F5", "#000000"),
+        BlackWhite: new ColorScheme("#171717", "#FFFFFF"),
+        PurpleWhite: new ColorScheme("#6E427F", "#FFFFFF"),
+        IndigoWhite: new ColorScheme("#6366F1", "#FFFFFF"),
+        VioletWhite: new ColorScheme("#8B5CF6", "#FFFFFF"),
+        LavenderWhite: new ColorScheme("#A855F7", "#FFFFFF"),
+        SpaceWhite: new ColorScheme("#283057", "#FFFFFF"),
+        SalmonBlack: new ColorScheme("#F59678", "#000000"),
+        RoseWhite: new ColorScheme("#EE5558", "#FFFFFF"),
+        BlackAmber: new ColorScheme("#1C1917", "#FACC15"),
+        SapphireWhite: new ColorScheme("#155E75", "#FFFFFF"),
+        SkyBlack: new ColorScheme("#49C6F4", "#000000"),
+        CyanBlack: new ColorScheme("#0EE3D8", "#000000"),
+        MangoBlack: new ColorScheme("#FF5915", "#000000"),
+        LimeBlack: new ColorScheme("#AEFC27", "#000000"),
+        NeonBlack: new ColorScheme("#40F717", "#000000"),
+        GreenBlack: new ColorScheme("#11F871", "#000000"),
+        RoseBlack: new ColorScheme("#FDC4E1", "#000000"),
     } as const;
 
     static get codes() {
