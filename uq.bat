@@ -4,7 +4,7 @@ if "%1" == "add" (
 	cd backend
 	cmd /C yarn add-quote
 ) else if "%1" == "push" (
-	git add .
+	git add backend/data/quotes.json
 	git commit -m "feat: new quote"
 	git push
 ) else if "%1" == "" (
