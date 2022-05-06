@@ -28,7 +28,7 @@ const { currentQuote, refreshQuote } = defineProps<{
             }"
         >
             <div
-                class="u-flex-center !justify-around w-full"
+                class="u-flex-center !justify-between sm:!justify-around w-full"
                 id="content-header"
             >
                 <p class="font-bold" :title="Locale.RefreshQuote">
@@ -37,7 +37,7 @@ const { currentQuote, refreshQuote } = defineProps<{
                     </button>
                 </p>
 
-                <div class="u-flex-center gap-6">
+                <div class="u-flex-center gap-4 sm:gap-6">
                     <a
                         class="u-link"
                         :href="ExternalURLs.github"
