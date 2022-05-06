@@ -20,7 +20,7 @@
 # File Structure
 
 - [./backend/data/quotes.json](./backend/data/quotes.json) - Contains all the quotes.
-- [./add-quote.bat](./add-quote.bat) - Use this to easily add quotes. (Windows only)
+- [./uq.bat](./uq.bat) - Local shortcut commands. (Windows only)
 - [./backend](./backend) - Contains all the backend related code including API generation.
 - [./frontend](./frontend) - Contains all the website code.
 
