@@ -16,7 +16,7 @@ const testBuild = async () => {
         force: true,
     });
 
-    const index = 0;
+    const index = table.quotes.length - 1;
     const quote = table.quotes[index];
     if (!quote) {
         throw Error(`Index ${index} doesn't exist in table.`);

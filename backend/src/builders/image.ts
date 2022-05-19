@@ -6,42 +6,67 @@ import { IQuote } from "../models/exports";
 import { ColorScheme } from "../tools/colors";
 import { FontFamily } from "../tools/fonts";
 
-const size = 1000;
-const textPaddingX = 100;
-const textSpacingY = 15;
-const qFontFamily = FontFamily.families.urbanistExtraBold;
-const qFontSize = "58pt";
-const aFontFamily = FontFamily.families.urbanistItalic;
-const aFontSize = "24pt";
-const cFontFamily = FontFamily.families.urbanistItalic;
-const cFontSize = "12pt";
-const cPaddingX = 10;
-const cPaddingY = cPaddingX / 2;
+export interface IDesignOptions {
+    size: number;
+    textPaddingX: number;
+    textSpacingY: number;
+    qFontFamily: FontFamily;
+    qFontSize: number;
+    qFontReducer: number;
+    qFontSizeReducer: number;
+    aFontFamily: FontFamily;
+    aFontSize: number;
+    cFontFamily: FontFamily;
+    cFontSize: number;
+    cPaddingX: number;
+    cPaddingY: number;
+}
 
 export const generateQuoteOutputPng = async (index: number, quote: IQuote) => {
     // @ts-ignore
     const color = ColorScheme.getColor(quote.color);
 
-    registerFont(qFontFamily.path, {
-        family: qFontFamily.family,
+    const design: IDesignOptions = {
+        size: 1000,
+        textPaddingX: 100,
+        textSpacingY: 15,
+        qFontFamily: FontFamily.families.urbanistExtraBold,
+        qFontSize: 58,
+        qFontReducer: 25,
+        qFontSizeReducer: 8,
+        aFontFamily: FontFamily.families.urbanistItalic,
+        aFontSize: 24,
+        cFontFamily: FontFamily.families.urbanistItalic,
+        cFontSize: 12,
+        cPaddingX: 10,
+        cPaddingY: 5,
+    };
+
+    registerFont(design.qFontFamily.path, {
+        family: design.qFontFamily.family,
     });
-    registerFont(aFontFamily.path, {
-        family: aFontFamily.family,
+    registerFont(design.aFontFamily.path, {
+        family: design.aFontFamily.family,
     });
 
-    const canvas = createCanvas(size, size);
+    const canvas = createCanvas(design.size, design.size);
     const ctx = canvas.getContext("2d");
 
     ctx.fillStyle = color.primary;
-    ctx.fillRect(0, 0, size, size);
+    ctx.fillRect(0, 0, design.size, design.size);
 
-    ctx.font = `${qFontSize} ${qFontFamily.family}`;
+    const tMaxWidth = design.size - design.textPaddingX * 2;
+    const words = quote.quote.split(/\s+/);
+
+    design.qFontSize =
+        design.qFontSize -
+        design.qFontSizeReducer *
+            Math.floor(words.length / design.qFontReducer);
+
+    ctx.font = `${design.qFontSize}pt ${design.qFontFamily.family}`;
     ctx.fillStyle = color.contrast;
     ctx.textAlign = "start";
     ctx.textBaseline = "middle";
-
-    const tMaxWidth = size - textPaddingX * 2;
-    const words = quote.quote.split(/\s+/);
 
     let i = 0;
     const lines = [""];
@@ -59,31 +84,35 @@ export const generateQuoteOutputPng = async (index: number, quote: IQuote) => {
     }
 
     const tSingleHeight = getTextHeight(ctx.measureText("Yy"));
-    const tSingleSpacedHeight = tSingleHeight + textSpacingY;
+    const tSingleSpacedHeight = tSingleHeight + design.textSpacingY;
     const tHeight = tSingleSpacedHeight * lines.length;
-    const tTop = (size - tHeight) / 2;
+    const tTop = (design.size - tHeight) / 2;
     lines.forEach((line, i) => {
-        ctx.fillText(line, textPaddingX, tTop + tSingleSpacedHeight * i);
+        ctx.fillText(line, design.textPaddingX, tTop + tSingleSpacedHeight * i);
     });
 
-    ctx.font = `${aFontSize} ${aFontFamily.family}`;
+    ctx.font = `${design.aFontSize}pt ${design.aFontFamily.family}`;
     ctx.fillText(
         `~ ${quote.author}`,
-        textPaddingX,
-        tTop + tHeight - textSpacingY / 2
+        design.textPaddingX,
+        tTop + tHeight - design.textSpacingY / 2
     );
 
-    ctx.font = `${cFontSize} ${cFontFamily.family}`;
+    ctx.font = `${design.cFontSize}pt ${design.cFontFamily.family}`;
     ctx.textAlign = "end";
     ctx.textBaseline = "bottom";
-    ctx.fillText(ExternalLinks.credits, size - cPaddingX, size - cPaddingY);
+    ctx.fillText(
+        ExternalLinks.credits,
+        design.size - design.cPaddingX,
+        design.size - design.cPaddingY
+    );
 
     const cSingleHeight = getTextHeight(ctx.measureText("Yy"));
-    ctx.font = `${cFontSize} ${qFontFamily.family}`;
+    ctx.font = `${design.cFontSize}pt ${design.qFontFamily.family}`;
     ctx.fillText(
         Constants.title,
-        size - cPaddingX,
-        size - cPaddingY * 2 - cSingleHeight
+        design.size - design.cPaddingX,
+        design.size - design.cPaddingY * 2 - cSingleHeight
     );
 
     const filePath = FilePaths.getOutputQuotePng(index);
