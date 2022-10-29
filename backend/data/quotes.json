@@ -139,6 +139,16 @@
             "quote": "Trust takes years to build, seconds to break and forever to repair.",
             "author": "Unknown",
             "color": "RoseWhite"
+        },
+        {
+            "quote": "I have been and still am a seeker, but I have ceased to question stars and books; I have begun to listen to the teaching my blood whispers to me.",
+            "author": "Hermann Hesse",
+            "color" : "IvoryBlack"
+        },
+        {
+            "quote": "Just because you don't understand it doesn't mean it isn't so.",
+            "author": "Lemony Snickes",
+            "color" : "SalmonBlack"
         }
     ]
 }
