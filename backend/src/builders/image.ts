@@ -1,4 +1,4 @@
-import { createCanvas, registerFont } from "canvas";
+import { createCanvas, GlobalFonts } from "@napi-rs/canvas";
 import { ensureFile, writeFile } from "fs-extra";
 import { FilePaths } from "../config";
 import { Constants, Links } from "../constants";
@@ -22,6 +22,15 @@ export interface IDesignOptions {
     cPaddingY: number;
 }
 
+const registeredFonts: string[] = [];
+
+const registerFont = async (font: FontFamily) => {
+    const key = `${font.family}-${font.path}`;
+    if (registeredFonts.includes(key)) return;
+    GlobalFonts.registerFromPath(font.path, font.family);
+    registeredFonts.push(key);
+};
+
 export const generateQuoteOutputPng = async (index: number, quote: IQuote) => {
     // @ts-ignore
     const color = ColorScheme.getColor(quote.color);
@@ -42,12 +51,8 @@ export const generateQuoteOutputPng = async (index: number, quote: IQuote) => {
         cPaddingY: 5,
     };
 
-    registerFont(design.qFontFamily.path, {
-        family: design.qFontFamily.family,
-    });
-    registerFont(design.aFontFamily.path, {
-        family: design.aFontFamily.family,
-    });
+    registerFont(design.qFontFamily);
+    registerFont(design.aFontFamily);
 
     const canvas = createCanvas(design.size, design.size);
     const ctx = canvas.getContext("2d");
