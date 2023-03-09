@@ -7,6 +7,6 @@ export class Links {
     static github = "https://github.com/zyrouge/upright-quotes";
 
     static buildQuoteLink(index: number) {
-        return `${Links.website}/?index=${index}`;
+        return `${Links.website}?index=${index}`;
     }
 }
